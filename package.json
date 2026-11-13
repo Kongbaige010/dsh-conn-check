@@ -1,0 +1,36 @@
+{
+  "name": "dsh-conn-check",
+  "version": "0.2.0",
+  "description": "会话头部模型连通性胶囊：点一下真发一次请求，绿=通、红=不通；每个胶囊还能把当前会话切到该模型",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "connectivity",
+    "health-check"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "lib",
+    "assets",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "docs",
+    "INSTALL.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "license": "MIT"
+}

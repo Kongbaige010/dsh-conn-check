@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Model connectivity check",
+    "description": "Adds a row of model chips to the session header. Click one to send a real request and see whether that provider answers; each chip can also switch the current session to that model.",
+    "detail": "docs/DETAIL.md"
+  }
+}

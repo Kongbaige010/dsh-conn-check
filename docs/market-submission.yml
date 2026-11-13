@@ -1,0 +1,25 @@
+# dsh-market 投稿材料
+#
+# 目标：提交到 awesome-dsh-plugin 仓库（dsh-market 从那里读取目录）
+#   仓库：https://github.com/awesome-dsh-plugin/awesome-dsh-plugin
+#   路径：data/plugins/Kongbaige010__dsh-conn-check.yml
+#   方式：PR 一个文件，不改 README（README 由脚本生成）
+#
+# 准入门槛核对（见 contributing.md）：
+#   [x] package.json 声明 dsh.bundle.patch  → 可被 dsh plugin add 安装
+#   [x] 仓库根有 cordis.patch.yml
+#   [x] 真实可用代码（197 项测试 + 真机验证模型切换）
+#   [x] 仓库加 dsh-plugin topic
+#   [x] 附 Release 预构建 tarball
+#   [ ] 仓库创建满 1 天（CI 自动检查）→ 2026-11-14 12:22 后可提交
+#
+# 提交前把下面内容原样作为那一个 YAML 文件的内容。
+# tarball 用 latest/download + 不带版本号的文件名，避免下次发版后 404。
+
+url: https://github.com/Kongbaige010/dsh-conn-check
+name: Kongbaige010/dsh-conn-check
+category: model
+tarball: https://github.com/Kongbaige010/dsh-conn-check/releases/latest/download/dsh-conn-check.tgz
+description:
+  en: 'Adds model connectivity chips to the session header: one click sends a real request and shows green or red, a single chip can poll on its own, and its arrow switches the current session to that model.'
+  zh: '在会话头部加一排模型胶囊：点一下真发一次请求，绿=通、红=不通；单个胶囊可独立轮询，胶囊上的箭头可把当前会话切到该模型。'
