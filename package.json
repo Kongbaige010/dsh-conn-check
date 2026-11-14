@@ -9,6 +9,19 @@
     "connectivity",
     "health-check"
   ],
+  "author": "Kongbaige010 (https://github.com/Kongbaige010)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kongbaige010/dsh-conn-check.git"
+  },
+  "homepage": "https://github.com/Kongbaige010/dsh-conn-check#readme",
+  "bugs": {
+    "url": "https://github.com/Kongbaige010/dsh-conn-check/issues"
+  },
+  "engines": {
+    "node": ">=22.19.0",
+    "dsh": ">=0.2.2-rc.1"
+  },
   "type": "module",
   "main": "lib/index.js",
   "exports": {
