@@ -1,71 +1,71 @@
-# dsh-conn-check
+# dsh-conn-check [![](https://img.shields.io/badge/powered_by-dsh-4D6BFE?style=flat-square&logo=deepseek&logoColor=white)](https://github.com/deepseek-ai/deepseek-harness)
 
-[![](https://img.shields.io/badge/powered_by-dsh-4D6BFE?style=flat-square&logo=deepseek&logoColor=white)](https://github.com/deepseek-ai/deepseek-harness)
+**简体中文** · [English](README_en.md)
 
-> DSH 会话头部的一排模型连通性胶囊：**点一下真发一次请求**，通=绿、不通=红。
+> 在 DSH 会话头部提供模型连通性检测：点击标签即向对应模型发起一次真实请求，连通显示绿色，失败显示红色。
 
-![会话头部的模型连通性胶囊](assets/header-chips.png)
+![会话头部的模型连通性标签](assets/header-chips.png)
 
-> 真实界面截图，模型名已脱敏。
+> 界面截图，模型名称已作脱敏处理。
 
 ---
 
-## 它做什么
+## 功能
 
 | 元素 | 位置 | 作用 |
 |---|---|---|
-| 模型胶囊 | 会话头部 `对话 / 轨迹 / 统计` 右侧 | 点一下 → 宿主代发一次 `max_tokens=1` 请求 → 绿 / 红；悬停看耗时与失败原因 |
-| `●` 状态点 | 胶囊内最左 | 灰=没测过，蓝=测试中，**绿=通**，**红=不通** |
-| `○` 连续测试小点 | 胶囊内右侧 | 只让**这一个**模型每 3 秒重测一次；多个胶囊可同时各跑各的 |
-| `→` 箭头 | 胶囊最右 | 把**当前会话**切到该模型 |
-| `⇄` | 胶囊行右端 | 把激活的模型挨个测一遍（串行，避免打爆中转站） |
+| 模型标签 | 会话头部 `对话 / 轨迹 / 统计` 右侧 | 点击后由宿主发起一次 `max_tokens=1` 请求，返回连通状态；悬停可查看耗时与失败原因 |
+| `●` 状态指示 | 标签内左侧 | 灰色表示未检测，蓝色表示检测中，**绿色表示连通**，**红色表示失败** |
+| `○` 连续检测 | 标签内右侧 | 仅对当前模型每 3 秒重复检测一次；多个标签可并行运行 |
+| `→` 切换按钮 | 标签内右侧 | 将**当前会话**切换至该模型 |
+| `⇄` | 标签行末端 | 依次检测所有已启用的模型。采用串行方式，避免触发服务商限流 |
 | `F5` | 同上 | 刷新页面 |
-| `⚙` | 同上 | 浮层里勾选「激活哪几个」，勾选即时保存 |
-| `⟳` | 同上 | **连点两次**确认后重启整个应用 |
+| `⚙` | 同上 | 打开设置面板，选择启用哪些模型，选择即时保存 |
+| `⟳` | 同上 | 连续点击两次确认后重启应用 |
 
-失败悬停能看到 `HTTP 503：...` 这类**原文**，不是一句笼统的「失败」。
+悬停时可查看完整错误信息（例如 `HTTP 503`），而非笼统的失败提示。
 
-### 重启按钮的三重保险
+### 重启功能的三重保护
 
-① 要连点两次（第一次只是「上膛」，3 秒后自动取消）；
-② 服务端先返回 200 再退出，前端立刻盖一层「正在重启」遮罩，20 秒没成功会把真相和日志路径摆出来；
-③ **拿不到 Electron app 时按钮直接置灰**（web / headless 模式），绝不「点了就消失又不回来」。
+1. 需连续点击两次确认。首次点击进入待确认状态，3 秒后自动取消。
+2. 服务端返回 200 后进程退出，前端立即显示重启进度覆盖层；若 20 秒内未完成，将显示超时提示及日志路径。
+3. 在无法获取 Electron `app` 对象的环境（Web 模式、无头模式）下按钮置灰，避免出现点击后无响应的情况。
 
 ---
 
-## 模型从哪来
+## 模型来源
 
-自动读取，**不需要任何配置**：
+模型与凭据均在运行时自动读取，无需手动配置：
 
 | 内容 | 来源 |
 |---|---|
-| 候选模型 | `~/.dsh/profiles/<profile>/cordis.patch.yml` 里的 `llm-pi-ai.providers` |
-| 当前默认模型 | 同上，`agent-default-model` |
-| 密钥 | `~/.dsh/.credentials.yaml`（`refs.<ENV_NAME>`） |
+| 候选模型列表 | `~/.dsh/profiles/<profile>/cordis.patch.yml` → `llm-pi-ai.providers` |
+| 当前默认模型 | 同上文件 → `agent-default-model` |
+| 模型凭据 | `~/.dsh/.credentials.yaml` → `refs.<ENV_NAME>` |
 
-密钥**只在宿主进程内存里用，不下发到页面**。代码里没有任何站点名、模型名或密钥字面量。
+凭据仅在宿主进程内存中使用，不会下发至页面。源码中不含任何服务商名称、模型名称或密钥字面量。
 
-换站、加模型之后重启一次，胶囊会自动跟着变，不用改插件。
-
----
-
-## 怎么装
-
-见 [INSTALL.md](INSTALL.md)。概括是三步：
-
-```
-放好目录 → 设置 → 插件 → 添加插件 → 重启一次 DSH
-```
+更换服务商或新增模型后，重启一次即可生效，无需修改插件。
 
 ---
 
-## 已知边界
+## 安装
 
-- 只认「OpenAI 兼容」与「Anthropic messages」两种接口形态；其它协议按 OpenAI 形态发。
-- 单次探测超时硬上限 **20 秒**。
-- 前端靠 DOM 注入（`[role="tablist"]` 右边），DSH 前端大改版时可能需要调整选择器。
-- 探测请求会真实计费**极小额度**（`max_tokens=1`）。
-- 重启按钮**只在 Windows 桌面版**可用；web / headless 模式下自动置灰。
+详见 [INSTALL.md](INSTALL.md)。流程概括：
+
+```
+放置插件目录 → 设置 → 插件 → 添加插件 → 重启 DSH
+```
+
+---
+
+## 已知限制
+
+- 仅支持「OpenAI 兼容」与「Anthropic Messages」两种接口形态，其它协议按 OpenAI 形态发送。
+- 单次检测超时上限为 **20 秒**。
+- 前端依赖 DOM 注入（挂载于 `[role="tablist"]` 右侧）。DSH 前端大幅改版时可能需要调整选择器。
+- 检测请求会产生**极少量实际计费**（`max_tokens=1`）。
+- 重启功能**仅在 Windows 桌面版可用**，Web 模式与无头模式下按钮自动置灰。
 
 ---
 
@@ -76,7 +76,7 @@ $dsh = "$env:LOCALAPPDATA\Programs\DeepSeekRuntime\resources\runtime\cli\bin\dsh
 & $dsh plugin --profile desktop remove dsh-conn-check
 ```
 
-再删掉目录与状态文件即可完全清净：
+如需彻底清除，可一并删除插件目录与状态文件：
 
 ```
 ~/.dsh/local-plugins/dsh-conn-check
@@ -87,11 +87,9 @@ $dsh = "$env:LOCALAPPDATA\Programs\DeepSeekRuntime\resources\runtime\cli\bin\dsh
 
 ## 文档
 
-| 文件 | 读者 | 内容 |
-|---|---|---|
-| [INSTALL.md](INSTALL.md) | 要装的人 | 逐步安装过程、装完长什么样 |
-| [docs/DETAIL.md](docs/DETAIL.md) | 想深入的人 | 宿主侧为什么必需、路由接口、目录结构、自检与排障 |
-| [docs/NOTES.md](docs/NOTES.md) | 维护者 | 踩过的坑，**改代码前必读** |
+- [INSTALL.md](INSTALL.md)：安装步骤与界面说明。
+- [docs/DETAIL.md](docs/DETAIL.md)：架构说明、接口定义、目录结构、自检与故障排查。
+- [docs/NOTES.md](docs/NOTES.md)：实现过程中已确认的技术约束与已知问题。
 
 ---
 

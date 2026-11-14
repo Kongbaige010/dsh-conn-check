@@ -64,7 +64,7 @@ dsh-conn-check/
 ├── locale/{en,zh}.json    # 插件市场里的名称与描述
 ├── docs/
 │   ├── DETAIL.md          # 本文件
-│   └── NOTES.md           # 踩过的坑
+│   └── NOTES.md           # 已知技术约束
 └── tests/
     ├── selftest.mjs       # 配置解析自检
     ├── auto-detect.mjs    # 证明「模型是自动读的，没有硬编码」
@@ -143,7 +143,7 @@ node tests/restart-e2e.mjs
 
 ## 八、限制
 
-- 只认「OpenAI 兼容」与「Anthropic messages」两种接口形态，其它协议按 OpenAI 形态发。
+- 仅支持「OpenAI 兼容」与「Anthropic messages」两种接口形态，其它协议按 OpenAI 形态发。
 - 单次探测超时硬上限 **20 秒**。
 - 重启按钮**仅 Windows 桌面版**可用；其他平台自动置灰，不会假装成功。
 - 切换模型依赖 DSH 内部接口 `sessionController.selectModel`。版本不支持时点 `→` 会明确提示，**不影响连通性测试**。
@@ -155,7 +155,7 @@ node tests/restart-e2e.mjs
 
 设置 → 插件 → 卸载，然后重启 DSH。
 
-想彻底清净，再手动删掉：
+如需彻底清除，可手动删除：
 
 ```
 ~/.dsh/local-plugins/dsh-conn-check

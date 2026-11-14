@@ -38,6 +38,7 @@
     "docs",
     "INSTALL.md",
     "README.md",
+    "README_en.md",
     "LICENSE"
   ],
   "dsh": {
