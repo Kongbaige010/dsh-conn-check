@@ -1,5 +1,7 @@
 # dsh-conn-check [![](https://img.shields.io/badge/powered_by-dsh-4D6BFE?style=flat-square&logo=deepseek&logoColor=white)](https://github.com/deepseek-ai/deepseek-harness)
 
+[![npm version](https://img.shields.io/npm/v/dsh-conn-check)](https://www.npmjs.com/package/dsh-conn-check) [![GitHub stars](https://img.shields.io/github/stars/Kongbaige010/dsh-conn-check?style=social)](https://github.com/Kongbaige010/dsh-conn-check)
+
 **简体中文** · [English](README_en.md)
 
 > 在 DSH 会话头部提供模型连通性检测：点击标签即向对应模型发起一次真实请求，连通显示绿色，失败显示红色。
@@ -51,11 +53,19 @@
 
 ## 安装
 
-详见 [INSTALL.md](INSTALL.md)。流程概括：
+在 DSH 中依次打开 设置 → 插件 → 添加插件，填入包名：
 
 ```
-放置插件目录 → 设置 → 插件 → 添加插件 → 重启 DSH
+dsh-conn-check
 ```
+
+或使用 npm 直接安装：
+
+```bash
+npm install dsh-conn-check
+```
+
+安装完成后重启一次 DSH。详细步骤见 [INSTALL.md](INSTALL.md)。
 
 ---
 

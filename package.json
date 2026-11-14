@@ -1,7 +1,7 @@
 {
   "name": "dsh-conn-check",
-  "version": "0.2.0",
-  "description": "会话头部模型连通性胶囊：点一下真发一次请求，绿=通、红=不通；每个胶囊还能把当前会话切到该模型",
+  "version": "0.2.1",
+  "description": "Model connectivity checks in the DSH session header: click a chip to send a real request, green for reachable, red for failed. Each chip can also switch the current session to that model.",
   "keywords": [
     "dsh",
     "dsh-plugin",

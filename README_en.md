@@ -1,5 +1,7 @@
 # dsh-conn-check [![](https://img.shields.io/badge/powered_by-dsh-4D6BFE?style=flat-square&logo=deepseek&logoColor=white)](https://github.com/deepseek-ai/deepseek-harness)
 
+[![npm version](https://img.shields.io/npm/v/dsh-conn-check)](https://www.npmjs.com/package/dsh-conn-check) [![GitHub stars](https://img.shields.io/github/stars/Kongbaige010/dsh-conn-check?style=social)](https://github.com/Kongbaige010/dsh-conn-check)
+
 [简体中文](README.md) · **English**
 
 > Model connectivity checks in the DSH session header. Click a chip to send a real request to that model: green means reachable, red means failed.
@@ -51,11 +53,19 @@ After changing providers or adding models, restart once. No plugin changes are r
 
 ## Installation
 
-See [INSTALL.md](INSTALL.md). In short:
+In DSH, open Settings → Plugins → Add plugin and enter the package name:
 
 ```
-Place the plugin directory → Settings → Plugins → Add plugin → Restart DSH
+dsh-conn-check
 ```
+
+Or install it with npm:
+
+```bash
+npm install dsh-conn-check
+```
+
+Restart DSH once after installation. See [INSTALL.md](INSTALL.md) for details.
 
 ---
 
