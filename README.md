@@ -1,5 +1,7 @@
 # dsh-conn-check
 
+[![](https://img.shields.io/badge/powered_by-dsh-4D6BFE?style=flat-square&logo=deepseek&logoColor=white)](https://github.com/deepseek-ai/deepseek-harness)
+
 > DSH 会话头部的一排模型连通性胶囊：**点一下真发一次请求**，通=绿、不通=红。
 
 ![会话头部的模型连通性胶囊](assets/header-chips.png)
@@ -96,7 +98,3 @@ $dsh = "$env:LOCALAPPDATA\Programs\DeepSeekRuntime\resources\runtime\cli\bin\dsh
 ## 许可
 
 MIT
-
----
-
-[![](https://img.shields.io/badge/powered_by-dsh-4D6BFE?style=flat-square&logo=deepseek&logoColor=white)](https://github.com/deepseek-ai/deepseek-harness)
