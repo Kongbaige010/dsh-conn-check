@@ -98,7 +98,7 @@ $dsh = "$env:LOCALAPPDATA\Programs\DeepSeekRuntime\resources\runtime\cli\bin\dsh
 ## 文档
 
 - [INSTALL.md](INSTALL.md)：安装步骤与界面说明。
-- [docs/DETAIL.md](docs/DETAIL.md)：架构说明、接口定义、目录结构、自检与故障排查。
+- [docs/DETAIL.md](docs/DETAIL.md)：架构说明、接口定义、目录结构、自检与故障排查（[English](docs/DETAIL_en.md)）。
 - [docs/NOTES.md](docs/NOTES.md)：实现过程中已确认的技术约束与已知问题。
 
 ---

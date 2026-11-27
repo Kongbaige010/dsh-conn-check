@@ -98,7 +98,7 @@ To remove all traces, delete the plugin directory and the state file as well:
 ## Documentation
 
 - [INSTALL.md](INSTALL.md): installation steps and interface overview.
-- [docs/DETAIL.md](docs/DETAIL.md): architecture, routes, directory layout, self-checks, and troubleshooting.
+- [docs/DETAIL_en.md](docs/DETAIL_en.md): architecture, routes, directory layout, self-checks, and troubleshooting.
 - [docs/NOTES.md](docs/NOTES.md): confirmed technical constraints and known issues.
 
 ---

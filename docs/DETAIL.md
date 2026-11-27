@@ -1,5 +1,7 @@
 # 技术细节
 
+**简体中文** · [English](DETAIL_en.md)
+
 > 只想知道怎么用：看 [README.md](../README.md)；只想装：看 [INSTALL.md](../INSTALL.md)。
 > 这份写给想搞清楚内部怎么跑、或者要改它的人。
 
@@ -63,7 +65,8 @@ dsh-conn-check/
 │   └── header-chips.png   # README 用的界面截图
 ├── locale/{en,zh}.json    # 插件市场里的名称与描述
 ├── docs/
-│   ├── DETAIL.md          # 本文件
+│   ├── DETAIL.md          # 本文件（中文）
+│   ├── DETAIL_en.md       # 本文件（English）
 │   └── NOTES.md           # 已知技术约束
 └── tests/
     ├── selftest.mjs       # 配置解析自检
